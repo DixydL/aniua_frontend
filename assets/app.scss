@@ -1,0 +1,149 @@
+.content {
+  margin-top: 40px;
+}
+
+.detail {
+  color: #b8b8b8;
+  font-size: 14px;
+  .label-detail {
+    font-size: 16px;
+    color: #ffffff;
+  }
+}
+
+.all-anime {
+  display: inline-block;
+  width: 205px;
+  justify-content: left;
+  align-items: left;
+  text-align: center;
+  font-weight: bold;
+  font-size: 28;
+  margin-right: 10px;
+  padding-left: 4px;
+  padding-bottom: 27px;
+}
+
+.poster:hover .img{
+  // -webkit-filter: blur(2px);
+  // filter: blur(2px);
+  background: rgba(0,0,0,0.1);
+  opacity: 0.5;
+  transition: .4s ease-in-out;
+}
+
+.poster {
+  border-radius: 6px;
+}
+
+.related-anime {
+  margin-top: -6px;
+  padding: 0px 16px 0px 16px;
+  .all-anime {
+    width: 170px;
+  }
+}
+.filter {
+  border-radius: 10px !important;
+}
+// .anime-all-right {
+//   border-left: solid 1px #2f2f2f;
+// }
+
+// .ar-image{
+//   position: relative;
+//   width: 238px;
+//   height: 150px;
+// }
+
+.poster-prev .v-image__image{
+  border-radius: 5px 5px 0px 0px;
+}
+
+.name-title {
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 12px !important;
+}
+
+.poster .info-detail-anime{
+  display: none;
+}
+
+.swiper-next {
+  cursor: pointer;
+}
+
+.poster:hover .info-detail-anime{
+  position: absolute;
+  top: 0;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 99;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: .4s ease-in-out;
+  margin:0;
+  display: block;
+}
+
+.count-series {
+  right: 6px;
+  bottom: 33px;
+  position: absolute;
+  background: #186b60;
+  border-radius: 4px;
+  /* border: #164c45; */
+  /* border-top: solid 1px #164C46; */
+  border-right: solid 1px #164C46;
+  /* border-left: solid 2px #164C46; */
+  border-bottom: solid 1px #164C46;
+  /* border-width: 38px; */
+  color: #eeeeee;
+  font-size: 13px;
+  padding: 4px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.episode-button button {
+  margin-right: 7px;
+}
+
+.all-anime-block {
+  display: flex;
+  justify-content: center;
+}
+
+.view {
+  padding: 3px 10px 10px 10px;
+}
+
+.anime-block {
+  font-weight: bold;
+  font-size: 28;
+  margin-right: 0px;
+  padding-right: 20px;
+  padding-bottom: 27px;
+  width: 200px;
+
+  .v-image__image {
+    border-radius: 6px 6px 0px 0px;
+  }
+}
+
+
+.title a {
+  text-decoration: none;
+}
+
+.poster a {
+  text-decoration: none;
+}
+
+.link-title{
+  color: #ffffff;
+}
