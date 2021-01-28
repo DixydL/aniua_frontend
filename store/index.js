@@ -45,7 +45,7 @@ const store = () => new Vuex.Store({
       // if (state.user.user.token) {
       //   return Axios.create({ headers: { 'Authorization': 'Bearer ' + state.user.user.token, } });
      // } else {
-        return Axios.create({baseURL: proccess.env.APP_URL + '/api/'});
+        return Axios.create({baseURL: process.env.APP_URL + '/api/'});
       //}
     },
     getAuth: state => () => {

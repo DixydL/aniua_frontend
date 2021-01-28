@@ -13,8 +13,6 @@ const actions = {
 
     let formData = new FormData();
 
-    // files
-
     formData.append("file", file, file.name);
 
     console.log(file);
@@ -34,7 +32,7 @@ const actions = {
 
   update: async (context, data) => {
     return await context.rootGetters.axios()
-      .post(API_BASE_URL + "/v1/post/" + data.post_id + "/chapter/" + data.chapter_id, data.form)
+      .post("/v1/post/" + data.post_id + "/chapter/" + data.chapter_id, data.form)
       .then(response => {
         return response;
       })
