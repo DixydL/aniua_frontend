@@ -1,30 +1,32 @@
 <template>
   <div>
     <v-card>
-      <v-data-table
-        dense
-        :headers="headers"
-        :items="episodesItems"
-        item-key="name"
-        class="elevation-1"
-      >
-        <template v-slot:top>
-          <v-toolbar flat>
-            <v-btn
-              color="primary"
-              dark
-              class="mb-2"
-              v-bind="attrs"
-              :to="'/admin/anime/' + $route.params.id + '/episodes/create'"
-              >Додати нову серію</v-btn
-            >
-          </v-toolbar>
-        </template>
-        <template v-slot:item.actions="{ item }">
-          <v-btn color="blue darken-1" text @click="save">Редагувати</v-btn>
-          <v-btn color="blue darken-1" text @click="save">Видалити</v-btn>
-        </template>
-      </v-data-table>
+      <client-only>
+        <v-data-table
+          dense
+          :headers="headers"
+          :items="episodesItems"
+          item-key="name"
+          class="elevation-1"
+        >
+          <template v-slot:top>
+            <v-toolbar flat>
+              <v-btn
+                color="primary"
+                dark
+                class="mb-2"
+                v-bind="attrs"
+                :to="'/admin/anime/' + $route.params.id + '/episodes/create'"
+                >Додати нову серію</v-btn
+              >
+            </v-toolbar>
+          </template>
+          <template v-slot:item.actions="{ item }">
+            <v-btn color="blue darken-1" text @click="save">Редагувати</v-btn>
+            <v-btn color="blue darken-1" text @click="save">Видалити</v-btn>
+          </template>
+        </v-data-table>
+      </client-only>
     </v-card>
   </div>
 </template>
