@@ -1,11 +1,52 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" class="all-anime-header">
         <h3>Аніме серіали</h3>
-        <v-divider></v-divider>
+        <v-btn class="menu-filter d-lg-none" @click="openFilter" dark small color="cyan darken-2">
+          Меню
+        </v-btn>
       </v-col>
-      <v-col cols="9" class="anime-all-right">
+      <v-navigation-drawer v-model="drawerFilter" absolute temporary>
+        <v-col cols="12">
+          <v-form>
+            <v-autocomplete
+              auto-select-first
+              deletable-chips
+              multiple
+              small-chips
+              solo
+              v-model="choseGenres"
+              :items="items"
+              label="Жанри"
+            ></v-autocomplete>
+            <v-text-field
+              placeholder="Введіть назву аніме..."
+              :height="20"
+              dense
+              outlined
+              v-model="search"
+            >
+              <template v-slot:append>
+                <v-fade-transition leave-absolute>
+                  <v-progress-circular
+                    v-if="loading"
+                    size="24"
+                    color="info"
+                    indeterminate
+                  ></v-progress-circular>
+                </v-fade-transition>
+              </template>
+            </v-text-field>
+            <v-row class="justify-center">
+              <v-btn @click="handleSearch" depressed color="teal" justify-center
+                >Пошук</v-btn
+              >
+            </v-row>
+          </v-form>
+        </v-col>
+      </v-navigation-drawer>
+      <v-col cols="12" lg="9" class="anime-all-right pa-0">
         <v-container>
           <v-row class="all-anime-block">
             <div class="anime-block" v-for="anime in animes" :key="anime.id">
@@ -33,11 +74,27 @@
           </v-row>
         </v-container>
       </v-col>
-      <v-col cols="3">
-        <v-sheet class="d-flex filter" height="310">
+      <v-col cols="12" lg="3"
+        ><v-sheet class="filter d-none d-lg-flex d-xl-none" height="310">
           <v-col cols="12">
             <v-form>
-              <v-text-field v-model="search">
+              <v-autocomplete
+                auto-select-first
+                deletable-chips
+                multiple
+                small-chips
+                solo
+                v-model="choseGenres"
+                :items="items"
+                label="Жанри"
+              ></v-autocomplete>
+              <v-text-field
+                placeholder="Введіть назву аніме..."
+                :height="20"
+                dense
+                outlined
+                v-model="search"
+              >
                 <template v-slot:append>
                   <v-fade-transition leave-absolute>
                     <v-progress-circular
@@ -48,12 +105,16 @@
                     ></v-progress-circular>
                   </v-fade-transition>
                 </template>
-                <template v-slot:append-outer>
-                  <v-btn @click="handleSearch" icon
-                    ><v-icon>mdi-magnify</v-icon></v-btn
-                  >
-                </template>
               </v-text-field>
+              <v-row class="justify-center">
+                <v-btn
+                  @click="handleSearch"
+                  depressed
+                  color="teal"
+                  justify-center
+                  >Пошук</v-btn
+                >
+              </v-row>
             </v-form>
           </v-col>
         </v-sheet>
@@ -74,23 +135,41 @@ export default {
   },
   created() {
     this.$store.dispatch("anime/load");
+    this.$store.dispatch("genre/load");
   },
   computed: {
     ...mapGetters({
       animes: "anime/getAnimes",
+      genres: "genre/getGenres",
     }),
+  },
+  watch: {
+    genres: function (val) {
+      var items = [];
+      val.forEach((element) => items.push(element.name));
+      this.items = this.items.concat(items);
+    },
   },
   data() {
     return {
+      items: [{ header: "Виберіть жанр" }],
+      choseGenres: [],
       search: "",
       appUrl: process.env.APP_URL,
-      //animes: [1, 2],
+      drawerFilter: false,
     };
   },
+
   methods: {
     handleSearch() {
-      this.$store.dispatch("anime/load", { search: this.search });
+      this.$store.dispatch("anime/load", {
+        search: this.search,
+        genres: this.choseGenres,
+      });
     },
+    openFilter() {
+      this.drawerFilter = true;
+    }
   },
 };
 </script>
@@ -128,6 +207,13 @@ export default {
 .all-anime-container {
   text-align: center;
 }
+
+.menu-filter {
+}
+
+// .all-anime-header {
+//   padding: 12px !important;
+// }
 
 @media (max-width: 600px) {
   .all-anime {

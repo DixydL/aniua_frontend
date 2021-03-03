@@ -16,28 +16,28 @@
       label="Країна"
     ></v-select>
     <v-text-field v-model="form.studio" label="Назва студія"></v-text-field>
-    <v-menu
-      v-model="menu2"
-      :close-on-content-click="false"
-      :nudge-right="40"
-      transition="scale-transition"
-      offset-y
-      min-width="290px"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-text-field
-          v-model="form.release_date"
-          label="Дада виходу"
-          readonly
-          v-bind="attrs"
-          v-on="on"
-        ></v-text-field>
-      </template>
-      <v-date-picker
-        v-model="form.release_date"
-        @input="menu2 = false"
-      ></v-date-picker>
-    </v-menu>
+    <v-text-field v-model="form.release_date" label="Дата виходу Рік"></v-text-field>
+    <v-btn-toggle v-model="form.season" borderless>
+      <v-btn value="0">
+        <span class="hidden-sm-and-down">Без сезону</span>
+      </v-btn>
+
+      <v-btn value="1">
+        <span class="hidden-sm-and-down">Весна</span>
+      </v-btn>
+
+      <v-btn value="2">
+        <span class="hidden-sm-and-down">Літо</span>
+      </v-btn>
+
+      <v-btn value="3">
+        <span class="hidden-sm-and-down">Осінь</span>
+      </v-btn>
+
+      <v-btn value="4">
+        <span class="hidden-sm-and-down">Зима</span>
+      </v-btn>
+    </v-btn-toggle>
     <v-combobox
       v-model="form.voicers"
       :items="items"
@@ -176,6 +176,7 @@ export default {
       translators: [],
       country: "",
       release_date: "",
+      season: "0",
       type: "",
       studio: "",
       genres: [],
@@ -214,6 +215,15 @@ export default {
         text.toString().toLowerCase().indexOf(query.toString().toLowerCase()) >
         -1
       );
+    },
+    saveYear(year) {
+      this.$refs.menu2.save(year);
+
+      // Reset activePicker to type YEAR
+      this.$refs.picker.activePicker = "YEAR";
+
+      // Close the menu/datepicker
+      this.menu2 = false;
     },
   },
 };

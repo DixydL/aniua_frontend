@@ -68,6 +68,10 @@
   font-size: 12px !important;
 }
 
+.v-input__slot{
+  background: #262626 !important;
+}
+
 .poster .info-detail-anime{
   display: none;
 }
@@ -132,6 +136,12 @@
 
   .v-image__image {
     border-radius: 6px 6px 0px 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .anime-block {
+    width: 183px;
   }
 }
 

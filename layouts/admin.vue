@@ -20,6 +20,15 @@
               <v-list-item-title>Аніме</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+          <v-list-item to="/admin/cooperation" nuxt link>
+            <v-list-item-icon>
+              <v-icon>mdi-image</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>Співпраця</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
     </v-container>

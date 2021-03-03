@@ -2,11 +2,11 @@
   <v-container>
     <h1>{{ anime.name }}</h1>
     <v-row>
-      <v-col cols="9">
+      <v-col cols="12" lg="9">
         <v-card class="view mx-auto">
           <v-container>
             <v-row justify="space-between">
-              <v-col cols="3">
+              <v-col cols="12" lg="3">
                 <v-img
                   height="370"
                   width="320"
@@ -94,7 +94,7 @@
           </v-container>
         </v-card>
       </v-col>
-      <v-col cols="2">
+      <v-col cols="12" lg="2">
         <v-card class="mx-auto">
           <v-list-item>
             <v-list-item-content>

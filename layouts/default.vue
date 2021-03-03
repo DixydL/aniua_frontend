@@ -67,7 +67,7 @@ export default {
       miniVariant: false,
       right: false,
       rightDrawer: false,
-      title: "AniUA",
+      title: "Inari",
     };
   },
 };

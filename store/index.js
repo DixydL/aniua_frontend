@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import anime from './modules/anime';
+import genre from './modules/genre';
 import file from './modules/file';
 import episode from './modules/episode';
 import Axios from 'axios';
@@ -67,6 +68,7 @@ const store = () => new Vuex.Store({
   },
   modules: {
     anime,
+    genre,
     file,
     episode
   }

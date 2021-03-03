@@ -162,6 +162,16 @@ export default {
         freeMode: false,
         allowTouchMove: false,
         slidesPerGroup: 2,
+        breakpoints: {
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 15,
+          },
+          600: {
+            slidesPerView: 6,
+            spaceBetween: 20,
+          },
+        },
         on: {
           resize: () => {
             this.$refs.swiperUpdate.$swiper.changeDirection(
@@ -171,6 +181,16 @@ export default {
         },
       },
       swiperOptionAll: {
+        breakpoints: {
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 15,
+          },
+          600: {
+            slidesPerView: 6,
+            spaceBetween: 20,
+          },
+        },
         slidesPerView: "auto",
         spaceBetween: 20,
         slidesPerColumn: 2,
