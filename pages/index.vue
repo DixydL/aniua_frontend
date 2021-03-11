@@ -12,7 +12,15 @@
         <v-divider></v-divider>
       </v-col>
       <swiper ref="swiperUpdate" class="swiper" :options="swiperOption">
-        <swiper-slide v-for="anime in animes" :key="anime.id">
+        <swiper-slide v-if="!loading" v-for="aniemFake in animesFake">
+          <v-skeleton-loader
+            class="mx-auto"
+            height="290"
+            width="200"
+            type="image"
+          ></v-skeleton-loader>
+        </swiper-slide>
+        <swiper-slide v-if="loading" v-for="anime in animes" :key="anime.id">
           <v-card class="mx-auto poster poster-prev" height="320">
             <nuxt-link :to="'/anime/' + anime.id">
               <v-img
@@ -143,9 +151,9 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  created() {
-    console.log(process.env.APP_URL);
-    this.$store.dispatch("anime/load");
+  async created() {
+    await this.$store.dispatch("anime/load");
+    this.loading = false;
   },
   computed: {
     ...mapGetters({
@@ -154,8 +162,11 @@ export default {
   },
   data() {
     return {
+      //animes: [1, 2, 3, 4, 5, 6],
+      loading: true,
       //animes: [1, 2],
       appUrl: process.env.APP_URL,
+      animesFake: [1, 2, 3, 4, 5, 6],
       swiperOption: {
         slidesPerView: "auto",
         spaceBetween: 20,
@@ -226,5 +237,4 @@ export default {
 };
 </script>
 <style lang="scss">
-
 </style>

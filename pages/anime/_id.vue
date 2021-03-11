@@ -7,7 +7,17 @@
           <v-container>
             <v-row justify="space-between">
               <v-col cols="12" lg="3">
+                <v-sheet class="pa-3">
+                  <v-skeleton-loader
+                    class="mx-auto"
+                    height="370"
+                    width="223"
+                    type="image"
+                    v-if="loading"
+                  ></v-skeleton-loader>
+                </v-sheet>
                 <v-img
+                  v-if="!loading"
                   height="370"
                   width="320"
                   :src="appUrl + anime.poster_url"
@@ -128,12 +138,13 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  created() {
-    this.$store.dispatch("anime/loadAnime", this.$route.params.id);
-    this.$store.dispatch("anime/loadRelative");
+  async created() {
+    await this.$store.dispatch("anime/loadAnime", this.$route.params.id);
+    await this.$store.dispatch("anime/loadRelative");
+    this.loading = false;
   },
   watch: {
-    anime: function (val) {
+    anime: async function (val) {
       val.genres.forEach((genre) => (this.genres += genre.name + ", "));
       val.voicers.forEach((voicer) => (this.voicers += voicer.name + ", "));
       val.translators.forEach(
@@ -143,7 +154,7 @@ export default {
       this.voicers = this.voicers.trim().slice(0, -1);
       this.translators = this.translators.trim().slice(0, -1);
       console.log(val.episodes.length !== 0);
-      if(val.episodes.length !== 0){
+      if (val.episodes.length !== 0) {
         this.$store.dispatch("episode/loadEpisode", val.episodes[0].id);
       }
     },
@@ -157,12 +168,13 @@ export default {
     }),
   },
   methods: {
-    onEpisodeNext: function (episode_id) {
-      this.$store.dispatch("episode/loadEpisode", episode_id);
+    onEpisodeNext: async function (episode_id) {
+      await this.$store.dispatch("episode/loadEpisode", episode_id);
     },
   },
   data() {
     return {
+      loading: true,
       appUrl: process.env.APP_URL,
       genres: "",
       voicers: "",
