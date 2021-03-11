@@ -12,7 +12,7 @@
         <v-divider></v-divider>
       </v-col>
       <swiper ref="swiperUpdate" class="swiper" :options="swiperOption">
-        <swiper-slide v-if="!loading" v-for="aniemFake in animesFake">
+        <swiper-slide v-if="loading" v-for="aniemFake in animesFake">
           <v-skeleton-loader
             class="mx-auto"
             height="290"
@@ -20,7 +20,7 @@
             type="image"
           ></v-skeleton-loader>
         </swiper-slide>
-        <swiper-slide v-if="loading" v-for="anime in animes" :key="anime.id">
+        <swiper-slide v-if="!loading" v-for="anime in animes" :key="anime.id">
           <v-card class="mx-auto poster poster-prev" height="320">
             <nuxt-link :to="'/anime/' + anime.id">
               <v-img
