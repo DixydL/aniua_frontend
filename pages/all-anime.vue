@@ -4,7 +4,7 @@
       <v-col cols="12" class="all-anime-header">
         <h3>Аніме серіали</h3>
         <v-btn class="menu-filter d-lg-none" @click="openFilter" dark small color="cyan darken-2">
-          Меню
+          Фільтр
         </v-btn>
       </v-col>
       <v-navigation-drawer v-model="drawerFilter" absolute temporary>

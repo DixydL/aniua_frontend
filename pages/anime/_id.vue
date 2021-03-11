@@ -63,7 +63,7 @@
                   {{ anime.description }}
                 </p>
               </v-col>
-
+<!--
               <v-col cols="auto" class="text-center pl-0">
                 <v-row class="flex-column ma-0 fill" justify="top">
                   <v-col class="px-0">
@@ -85,6 +85,7 @@
                   </v-col>
                 </v-row>
               </v-col>
+              -->
             </v-row>
             <div class="video">
               <div class="episode-button">
@@ -113,12 +114,19 @@
           </v-list-item>
           <div class="related-anime">
             <div class="all-anime" v-for="anime in animes" :key="anime.id">
-              <v-card class="mx-auto" height="235">
-                <v-img
-                  :src="appUrl + anime.poster_url"
-                  class
-                  height="230px"
-                ></v-img>
+              <v-card class="mx-auto poster" height="235">
+                <nuxt-link :to="'/anime/' + anime.id">
+                  <v-img
+                    :src="appUrl + anime.poster_url"
+                    class
+                    height="230px"
+                  ></v-img>
+                  <span class="info-detail-anime"
+                    ><v-icon style="font-size: 70px"
+                      >mdi-arrow-right-drop-circle-outline</v-icon
+                    ></span
+                  >
+                </nuxt-link>
               </v-card>
             </div>
           </div>
