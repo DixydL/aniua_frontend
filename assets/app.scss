@@ -138,6 +138,12 @@
     border-radius: 6px 6px 0px 0px;
   }
 }
+.swiper-container{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+ }
 .swiper {
   .swiper-slide {
     display: flex;

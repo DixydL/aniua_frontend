@@ -199,12 +199,12 @@ export default {
             spaceBetween: 20,
           },
         },
-        slidesPerView: "auto",
+        //slidesPerView: "auto",
         spaceBetween: 20,
         slidesPerColumn: 2,
         freeMode: false,
         allowTouchMove: false,
-        slidesPerGroup: 2,
+        slidesPerGroup: 6,
         on: {
           resize: () => {
             // this.$refs.swiperUpdate.$swiper.changeDirection(
