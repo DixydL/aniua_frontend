@@ -167,6 +167,10 @@ export default {
             slidesPerView: 2,
             spaceBetween: 15,
           },
+          480: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
           600: {
             slidesPerView: 6,
             spaceBetween: 20,
@@ -174,9 +178,9 @@ export default {
         },
         on: {
           resize: () => {
-            this.$refs.swiperUpdate.$swiper.changeDirection(
-              window.innerWidth <= 960 ? "vertical" : "horizontal"
-            );
+            // this.$refs.swiperUpdate.$swiper.changeDirection(
+            //   window.innerWidth <= 960 ? "vertical" : "horizontal"
+            // );
           },
         },
       },
@@ -185,6 +189,10 @@ export default {
           320: {
             slidesPerView: 2,
             spaceBetween: 15,
+          },
+          480: {
+            slidesPerView: 3,
+            spaceBetween: 30,
           },
           600: {
             slidesPerView: 6,
@@ -199,9 +207,9 @@ export default {
         slidesPerGroup: 2,
         on: {
           resize: () => {
-            this.$refs.swiperUpdate.$swiper.changeDirection(
-              window.innerWidth <= 960 ? "vertical" : "horizontal"
-            );
+            // this.$refs.swiperUpdate.$swiper.changeDirection(
+            //   window.innerWidth <= 960 ? "vertical" : "horizontal"
+            // );
           },
         },
       },
@@ -218,44 +226,5 @@ export default {
 };
 </script>
 <style lang="scss">
-.swiper {
-  .swiper-slide {
-    display: flex;
-    width: 210px;
-    //height: 260px;
-    justify-content: left;
-    align-items: left;
-    text-align: center;
-    font-weight: bold;
-    font-size: 14 * 2;
-  }
-}
 
-.swiper-all {
-  height: 660px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-
-  .swiper-slide {
-    display: flex;
-    width: 210px;
-    height: 320px;
-    justify-content: left;
-    align-items: left;
-    text-align: center;
-    font-weight: bold;
-    font-size: 14 * 2;
-  }
-}
-
-.all-anime-container {
-  text-align: center;
-}
-
-@media (max-width: 600px) {
-  .all-anime {
-    width: 170px;
-  }
-}
 </style>

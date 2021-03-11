@@ -50,12 +50,12 @@
         <v-container>
           <v-row class="all-anime-block">
             <div class="anime-block" v-for="anime in animes" :key="anime.id">
-              <v-card class="mx-auto poster" height="300">
+              <v-card class="mx-auto poster" height="270">
                 <nuxt-link :to="'/anime/' + anime.id">
                   <v-img
                     :src="appUrl + anime.poster_url"
                     class="img"
-                    height="270px"
+                    height="250px"
                   ></v-img>
                   <span class="count-series">
                     {{ anime.current_episodes }}/{{ anime.count_episodes }}
