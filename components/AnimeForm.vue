@@ -112,7 +112,7 @@
         </v-text-field>
       </v-col>
       <v-col md="3">
-        <v-text-field v-model="form.episodes" label="Серій"></v-text-field>
+        <v-text-field v-model="form.count_episodes" label="Серій"></v-text-field>
       </v-col>
     </v-row>
     <v-file-input
