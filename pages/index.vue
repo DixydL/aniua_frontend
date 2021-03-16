@@ -107,7 +107,19 @@
       <v-container>
         <v-row>
           <swiper ref="swiperAll" class="swiper-all" :options="swiperOptionAll">
-            <swiper-slide v-for="anime in animes" :key="anime.id">
+            <swiper-slide v-if="loading" v-for="aniemFake in 12">
+              <v-skeleton-loader
+                class="mx-auto"
+                height="290"
+                width="200"
+                type="image"
+              ></v-skeleton-loader>
+            </swiper-slide>
+            <swiper-slide
+              v-if="!loading"
+              v-for="anime in animes"
+              :key="anime.id"
+            >
               <v-card class="mx-auto poster poster-prev" height="320">
                 <nuxt-link :to="'/anime/' + anime.id">
                   <v-img
@@ -168,7 +180,7 @@ export default {
       appUrl: process.env.APP_URL,
       animesFake: [1, 2, 3, 4, 5, 6],
       swiperOption: {
-        slidesPerView: "auto",
+        slidesPerView: 6,
         spaceBetween: 20,
         freeMode: false,
         allowTouchMove: false,

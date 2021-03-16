@@ -4,6 +4,7 @@ import anime from './modules/anime';
 import genre from './modules/genre';
 import file from './modules/file';
 import episode from './modules/episode';
+import cooperation from './modules/cooperation';
 import Axios from 'axios';
 
 Vue.use(Vuex)
@@ -70,7 +71,8 @@ const store = () => new Vuex.Store({
     anime,
     genre,
     file,
-    episode
+    episode,
+    cooperation
   }
   //
 })

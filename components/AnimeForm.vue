@@ -16,7 +16,10 @@
       label="Країна"
     ></v-select>
     <v-text-field v-model="form.studio" label="Назва студія"></v-text-field>
-    <v-text-field v-model="form.release_date" label="Дата виходу Рік"></v-text-field>
+    <v-text-field
+      v-model="form.release_date"
+      label="Дата виходу Рік"
+    ></v-text-field>
     <v-btn-toggle v-model="form.season" borderless>
       <v-btn value="0">
         <span class="hidden-sm-and-down">Без сезону</span>
@@ -132,6 +135,8 @@
   </v-form>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   props: ["anime"],
   watch: {
@@ -148,7 +153,6 @@ export default {
         this.form.current_episodes = anime.current_episodes;
         this.form.description = anime.description;
         this.form.poster_id = anime.poster_id;
-
         var genres;
         anime.genres.forEach((genre) => this.form.genres.push(genre.name));
         anime.voicers.forEach((voicer) => this.form.voicers.push(voicer.name));
@@ -158,6 +162,10 @@ export default {
 
         this.update = true;
       }
+    },
+    genres: function (genres) {
+      console.log(genres);
+      genres.forEach((genre) => this.items.push(genre.name));
     },
   },
   layout: "admin",
@@ -187,6 +195,14 @@ export default {
       date: new Date().toISOString().substr(0, 10),
     },
   }),
+  async created() {
+    this.$store.dispatch("genre/load");
+  },
+  computed: {
+    ...mapGetters({
+      genres: "genre/getGenres",
+    }),
+  },
   methods: {
     async save() {
       let respose = await this.$store.dispatch("anime/add", this.form);

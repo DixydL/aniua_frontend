@@ -55,7 +55,7 @@
                   <v-img
                     :src="appUrl + anime.poster_url"
                     class="img"
-                    height="250px"
+                    height="245px"
                   ></v-img>
                   <span class="count-series">
                     {{ anime.current_episodes }}/{{ anime.count_episodes }}

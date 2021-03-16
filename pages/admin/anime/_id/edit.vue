@@ -26,7 +26,6 @@ export default {
   },
   created() {
     this.$store.dispatch("anime/loadAnime", this.animeId);
-
   },
 };
 </script>

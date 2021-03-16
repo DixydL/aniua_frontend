@@ -60,7 +60,7 @@ export default {
   computed: {
     ...mapGetters({
       animes: "anime/getAnimes",
-    }),
+    })
   },
   methods: {
     async submit() {

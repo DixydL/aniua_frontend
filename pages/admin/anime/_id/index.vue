@@ -22,7 +22,9 @@
             </v-toolbar>
           </template>
           <template v-slot:item.actions="{ item }">
-            <v-btn color="blue darken-1" text @click="save">Редагувати</v-btn>
+            <v-btn color="blue darken-1" text @click="edit(item.id)"
+              >Редагувати</v-btn
+            >
             <v-btn color="blue darken-1" text @click="save">Видалити</v-btn>
           </template>
         </v-data-table>
@@ -61,6 +63,11 @@ export default {
     ...mapGetters({
       episodes: "episode/getEpisodes",
     }),
+  },
+  methods: {
+    async edit(episode_id) {
+      this.$router.push({ path: "/admin/anime/" + this.animeId + "/episodes/" + episode_id + "/edit" });
+    },
   },
 };
 </script>
